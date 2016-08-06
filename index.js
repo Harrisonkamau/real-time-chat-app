@@ -1,14 +1,16 @@
 //Require node modules
+var path = require('path');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 //create a home route
 app.get('/', function(req, res){
-  res.sendFile('index.html');
+  res.sendFile(path.resolve('index.html'));
 });
 
 //using socket.io
+//listen on the connection event
 io.on('connection', function(socket){
   console.log('A user is connected');
 });
