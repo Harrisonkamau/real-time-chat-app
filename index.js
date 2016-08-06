@@ -12,10 +12,12 @@ app.get('/', function(req, res){
 //using socket.io
 //listen on the connection event
 io.on('connection', function(socket){
-  console.log('A user is connected');
-  socket.on('disconnect', function(){
-    console.log('Uh, another user has been disconnected');
+   socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
   });
+//  socket.on('disconnect', function(){
+//    console.log('Uh, another user has been disconnected');
+//  });
 });
 //start the server
 http.listen(3000, function(){
