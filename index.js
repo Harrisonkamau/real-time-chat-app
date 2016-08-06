@@ -14,11 +14,13 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
    socket.on('chat message', function(msg){
     console.log('message: ' + msg);
+    io.emit('chat message', msg);
   });
 //  socket.on('disconnect', function(){
 //    console.log('Uh, another user has been disconnected');
 //  });
 });
+
 //start the server
 http.listen(3000, function(){
   console.log('listening on port:3000');
